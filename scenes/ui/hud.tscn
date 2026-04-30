@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[sub_resource type="LabelSettings" id="SubtitleSettings"]
+font_size = 28
+font_color = Color(0.95, 0.92, 0.78, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 0.7)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+size_flags_horizontal = 0
+size_flags_vertical = 8
+custom_minimum_size = Vector2(220, 0)
+
+[node name="StaminaLabel" type="Label" parent="Margin/VBox"]
+text = "STAMINA"
+modulate = Color(0.95, 0.92, 0.78, 0.85)
+
+[node name="Stamina" type="ProgressBar" parent="Margin/VBox"]
+custom_minimum_size = Vector2(220, 14)
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="SanityLabel" type="Label" parent="Margin/VBox"]
+text = "SANITY"
+modulate = Color(0.95, 0.92, 0.78, 0.85)
+
+[node name="Sanity" type="ProgressBar" parent="Margin/VBox"]
+custom_minimum_size = Vector2(220, 14)
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="Fader" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+mouse_filter = 2
+
+[node name="Subtitle" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300
+offset_top = -40
+offset_right = 300
+offset_bottom = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+label_settings = SubResource("SubtitleSettings")
+mouse_filter = 2

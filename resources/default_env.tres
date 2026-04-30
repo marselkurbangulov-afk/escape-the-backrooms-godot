@@ -1,0 +1,36 @@
+[gd_resource type="Environment" load_steps=2 format=3]
+
+[sub_resource type="Sky" id="Sky_1"]
+
+[resource]
+background_mode = 1
+background_color = Color(0.02, 0.02, 0.02, 1)
+background_energy_multiplier = 0.0
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.5, 0.32, 1)
+ambient_light_energy = 0.35
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 6.0
+ssao_enabled = true
+ssao_intensity = 1.4
+ssao_radius = 0.7
+sdfgi_enabled = true
+sdfgi_min_cell_size = 0.4
+sdfgi_cascades = 4
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_intensity = 0.9
+glow_strength = 1.0
+glow_bloom = 0.15
+glow_blend_mode = 1
+fog_enabled = true
+fog_light_color = Color(0.42, 0.36, 0.22, 1)
+fog_light_energy = 0.35
+fog_density = 0.012
+fog_height = 5.0
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.06
+adjustment_saturation = 0.9

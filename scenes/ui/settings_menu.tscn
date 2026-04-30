@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_settings"]
+
+[sub_resource type="LabelSettings" id="TitleSettings"]
+font_size = 32
+font_color = Color(0.95, 0.92, 0.78, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 0.7)
+
+[node name="SettingsMenu" type="CanvasLayer"]
+script = ExtResource("1_settings")
+
+[node name="Root" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+
+[node name="Backdrop" type="ColorRect" parent="Root"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+mouse_filter = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Root"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="Panel" type="PanelContainer" parent="Root/CenterContainer"]
+custom_minimum_size = Vector2(420, 0)
+
+[node name="Margin" type="MarginContainer" parent="Root/CenterContainer/Panel"]
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="Root/CenterContainer/Panel/Margin"]
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Root/CenterContainer/Panel/Margin/VBox"]
+text = "SETTINGS"
+horizontal_alignment = 1
+label_settings = SubResource("TitleSettings")
+
+[node name="VolumeRow" type="HBoxContainer" parent="Root/CenterContainer/Panel/Margin/VBox"]
+theme_override_constants/separation = 12
+
+[node name="VolumeLabel" type="Label" parent="Root/CenterContainer/Panel/Margin/VBox/VolumeRow"]
+custom_minimum_size = Vector2(110, 0)
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="Root/CenterContainer/Panel/Margin/VBox/VolumeRow"]
+custom_minimum_size = Vector2(220, 24)
+size_flags_horizontal = 3
+
+[node name="VolumeValue" type="Label" parent="Root/CenterContainer/Panel/Margin/VBox/VolumeRow"]
+custom_minimum_size = Vector2(50, 0)
+text = "80%"
+horizontal_alignment = 2
+
+[node name="Spacer" type="Control" parent="Root/CenterContainer/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 6)
+
+[node name="ResumeButton" type="Button" parent="Root/CenterContainer/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 38)
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="Root/CenterContainer/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 38)
+text = "Quit to desktop"

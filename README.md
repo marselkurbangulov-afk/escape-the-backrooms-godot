@@ -47,7 +47,7 @@ Or open `project.godot` in the Godot editor and press F5.
 | Jump              | `Space`            |
 | Look              | Mouse              |
 | Interact          | `E`                |
-| Release / capture mouse | `Esc`        |
+| Open settings / pause | `Esc`          |
 
 ## Project Layout
 
