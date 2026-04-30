@@ -12,6 +12,8 @@ const RNG_SEED: int = 13_071_996  # The Backrooms wiki Level 0 seed reference.
 
 const FlickerLight := preload("res://scripts/flicker_light.gd")
 const NoclipExit := preload("res://scripts/noclip_exit.gd")
+const WALL_TEX := preload("res://assets/textures/wall.png")
+const CARPET_TEX := preload("res://assets/textures/carpet.png")
 
 var _rng := RandomNumberGenerator.new()
 var _grid: Array[Array] = []  # _grid[x][z] -> 0 wall / 1 open
@@ -91,17 +93,22 @@ func _carve_corridor(from_pos: Vector2i, to_pos: Vector2i) -> void:
 func _build_materials() -> void:
 	_wall_material = StandardMaterial3D.new()
 	_wall_material.shading_mode = BaseMaterial3D.SHADING_MODE_PER_PIXEL
-	_wall_material.albedo_color = Color("d8b94a")
-	_wall_material.albedo_texture = _make_wallpaper_texture()
-	_wall_material.uv1_scale = Vector3(1.0, 1.0, 1.0)
+	_wall_material.albedo_color = Color(1.0, 1.0, 1.0)
+	_wall_material.albedo_texture = WALL_TEX
+	_wall_material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+	# Wall pattern repeats roughly once per ~2m horizontally; tile twice across
+	# a 4m block and once vertically across the 3.2m room height.
+	_wall_material.uv1_scale = Vector3(2.0, 1.0, 2.0)
 	_wall_material.roughness = 0.85
 	_wall_material.metallic = 0.0
 
 	_carpet_material = StandardMaterial3D.new()
 	_carpet_material.shading_mode = BaseMaterial3D.SHADING_MODE_PER_PIXEL
-	_carpet_material.albedo_color = Color("8c5a26")
-	_carpet_material.albedo_texture = _make_carpet_texture()
-	_carpet_material.uv1_scale = Vector3(GRID_W * 0.5, GRID_H * 0.5, 1.0)
+	_carpet_material.albedo_color = Color(1.0, 1.0, 1.0)
+	_carpet_material.albedo_texture = CARPET_TEX
+	_carpet_material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+	# One carpet tile per ~3m of floor.
+	_carpet_material.uv1_scale = Vector3(GRID_W * TILE_SIZE / 3.0, GRID_H * TILE_SIZE / 3.0, 1.0)
 	_carpet_material.roughness = 0.95
 
 	_ceiling_material = StandardMaterial3D.new()

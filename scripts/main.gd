@@ -6,6 +6,7 @@ extends Node
 const PLAYER_SCENE := preload("res://scenes/player/player.tscn")
 const LEVEL_0_SCENE := preload("res://scenes/levels/level_0.tscn")
 const HUD_SCENE := preload("res://scenes/ui/hud.tscn")
+const SETTINGS_SCENE := preload("res://scenes/ui/settings_menu.tscn")
 const BUZZ_SCRIPT := preload("res://scripts/buzz_generator.gd")
 
 
@@ -28,6 +29,9 @@ func _ready() -> void:
 
 	var hud := HUD_SCENE.instantiate()
 	add_child(hud)
+
+	var settings := SETTINGS_SCENE.instantiate()
+	add_child(settings)
 
 	var buzz := AudioStreamPlayer.new()
 	buzz.set_script(BUZZ_SCRIPT)
